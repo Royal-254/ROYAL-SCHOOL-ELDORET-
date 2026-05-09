@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CbeMotivTrack</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#6B2C91,#4A1A6B);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{background:#fff;border-radius:20px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.header{background:linear-gradient(135deg,#6B2C91,#1E3A8A);padding:40px 20px;text-align:center;color:#fff;border-radius:20px 20px 0 0;border-top:4px solid #D4AF37}
+.logo{font-size:28px;font-weight:bold;margin-bottom:5px}
+.school{font-size:13px;margin-bottom:3px}
+.tagline{font-size:12px;font-style:italic;color:#F5E6D3}
+.content{padding:30px 20px}
+.cred{background:#F5E6D3;border:2px solid #D4AF37;padding:12px;border-radius:10px;margin-bottom:15px;font-size:13px}
+.cred h4{color:#4A1A6B;margin-bottom:8px}
+.cred p{color:#4A1A6B;margin:3px 0}
+.form-group{margin-bottom:15px}
+label{display:block;color:#4A1A6B;font-weight:bold;margin-bottom:5px;font-size:13px}
+input{width:100%;padding:12px;border:2px solid #E5E7EB;border-radius:8px;font-size:14px}
+input:focus{outline:none;border-color:#6B2C91}
+.btn{width:100%;padding:14px;border:none;border-radius:8px;font-size:15px;font-weight:bold;cursor:pointer;background:linear-gradient(135deg,#6B2C91,#1E3A8A);color:#fff;margin-top:10px}
+.msg{padding:10px;border-radius:8px;margin-bottom:15px;display:none;font-size:13px}
+.dash{background:linear-gradient(135deg,#6B2C91,#4A1A6B);min-height:100vh;padding:15px;display:none}
+.dash-header{background:linear-gradient(135deg,#6B2C91,#1E3A8A);padding:20px;border-radius:12px;color:#fff;margin-bottom:20px}
+.dash-header h1{font-size:22px;margin-bottom:5px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:#fff;padding:15px;border-radius:10px;border-left:4px solid #D4AF37}
+.stat-card h3{color:#4A1A6B;font-size:11px;margin-bottom:8px}
+.stat-card .num{font-size:24px;font-weight:bold;color:#6B2C91}
+.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.menu-item{background:linear-gradient(135deg,#6B2C91,#1E3A8A);color:#fff;padding:20px 10px;border-radius:10px;text-align:center;cursor:pointer;font-size:13px}
+.menu-item .icon{font-size:28px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div id="auth" class="container">
+<div class="header">
+<div class="logo">CbeMotivTrack</div>
+<div class="school">Royal School Eldoret</div>
+<div class="tagline">"Learn to Serve"</div>
+</div>
+<div class="content">
+<div class="cred">
+<h4>🔑 Demo Login</h4>
+<p><b>Email:</b> admin@royalschool.ac.ke</p>
+<p><b>Password:</b> admin123</p>
+</div>
+<div id="msg" class="msg"></div>
+<form id="loginForm">
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="email" value="admin@royalschool.ac.ke" required>
+</div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" id="pass" value="admin123" required>
+</div>
+<button type="submit" class="btn">SIGN IN</button>
+</form>
+</div>
+</div>
+<div id="dash" class="dash">
+<div class="dash-header">
+<h1 id="welcome">Welcome</h1>
+<p id="role"></p>
+<button class="btn" onclick="logout()">Logout</button>
+</div>
+<div class="stats">
+<div class="stat-card"><h3>Students</h3><div class="num">450</div></div>
+<div class="stat-card"><h3>Payments</h3><div class="num">2.5M</div></div>
+<div class="stat-card"><h3>Defaulters</h3><div class="num">45</div></div>
+<div class="stat-card"><h3>Grades</h3><div class="num">12</div></div>
+</div>
+<div class="menu">
+<div class="menu-item" onclick="alert('Students')"><div class="icon">👥</div>Students</div>
+<div class="menu-item" onclick="alert('Payments')"><div class="icon">💰</div>Payments</div>
+<div class="menu-item" onclick="alert('Defaulters')"><div class="icon">⚠️</div>Defaulters</div>
+<div class="menu-item" onclick="alert('Messages')"><div class="icon">📱</div>Messages</div>
+<div class="menu-item" onclick="alert('Reports')"><div class="icon">🖨️</div>Reports</div>
+<div class="menu-item" onclick="alert('Analytics')"><div class="icon">📊</div>Analytics</div>
+</div>
+</div>
+<script>
+document.getElementById('loginForm').onsubmit=function(e){
+e.preventDefault();
+const email=document.getElementById('email').value;
+const pass=document.getElementById('pass').value;
+if(email==='admin@royalschool.ac.ke' && pass==='admin123'){
+document.getElementById('auth').style.display='none';
+document.getElementById('dash').style.display='block';
+document.getElementById('welcome').textContent='Welcome, Admin';
+document.getElementById('role').textContent='Director';
+}else{
+alert('Invalid credentials!');
+}
+}
+function logout(){
+document.getElementById('auth').style.display='block';
+document.getElementById('dash').style.display='none';
+}
+</script>
+</body>
+</html>
